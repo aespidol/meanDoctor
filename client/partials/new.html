@@ -1,0 +1,16 @@
+<div ng-controller="creationsController">
+<p><button ng-click = "logout()">Logout</button></p>
+<h1>Add Appointment</h1>
+<form name="appointmentForm">
+	<p>Date: <input type="date" ng-model = "appointment.date" name="date" required></p>
+	<p ng-show="appointmentForm.date.$error.required && !appointmentForm.date.$pristine">Date required</p>
+	<p>Time: <input type="time" ng-model = "appointment.time" name="time" required min="08:00:00" max="17:00:00"></p>
+	<p ng-show="appointmentForm.time.$error.required && !appointmentForm.time.$pristine">Time required</p>
+	<p ng-show="appointmentForm.time.$error.min && !appointmentForm.time.$pristine">Must be after 8am</p>
+	<p ng-show="appointmentForm.time.$error.max && !appointmentForm.time.$pristine">Must be before 5pm</p>
+	<p>Complaint <textarea value = "" name="complaint" ng-model = "appointment.complaint" required ng-minlength = "10"></textarea></p>
+	<p ng-show="appointmentForm.complaint.$error.required && !appointmentForm.complaint.$pristine">Complaint required</p>
+	<p ng-show="appointmentForm.complaint.$error.minlength && !appointmentForm.complaint.$pristine">Minlength must be 10.</p>
+	<p><a href="#/"><button>Cancel</button></a> | <a href="#/"><button ng-click="addAppointment()">Add Appointment</button></a></p>
+</form>
+</div>

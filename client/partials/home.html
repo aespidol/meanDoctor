@@ -1,0 +1,22 @@
+<div ng-controller="creationsController">
+<p><button ng-click="logout()">Logout</button></p>
+<h1>Doctor's Appointments</h1>
+<input type="text" ng-model="filter_name">
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Time</th>
+		<th>Patient Name</th>
+		<th>Complaint</th>
+		<th>Action</th>
+	</tr>
+	<tr ng-repeat = "appointment in appointments | filter:filter_name | orderBy: 'date' ">
+		<td>{{appointment.date | date:'MM/dd/yyyy'}}</td>
+		<td>{{appointment.time | date:'h:mma'}}</td>
+		<td>{{appointment.name}}</td>
+		<td>{{appointment.complaint}}</td>
+		<td><button ng-if = "username == appointment.name && currdate != appointment.date" ng-click="remove(appointment)">Cancel</button></td>
+	</tr>
+</table>
+	<a href="#/add"><button>Add Appointment</button></a>
+</div>
